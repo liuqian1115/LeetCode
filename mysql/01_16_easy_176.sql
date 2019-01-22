@@ -18,5 +18,6 @@
 ####################################
 
 sql = "select max(Salary) as SecondHighestSalary from Employee where Salary < (select max(Salary) from Employee) order by Salary desc limit 1"
-//使用offset偏移量
-sql = "select ( select Salary as SecondHighestSalary  from Employee order by Salary desc limit 1 offset 1) as SecondHighestSalary"
+//使用offset偏移量  
+//distinct SQL SELECT DISTINCT 语句在表中，可能会包含重复值。这并不成问题，不过，有时您也许希望仅仅列出不同（distinct）的值。关键词 DISTINCT 用于返回唯一不同的值。
+sql = "select ( select distinct Salary as SecondHighestSalary  from Employee order by Salary desc limit 1 offset 1) as SecondHighestSalary"
